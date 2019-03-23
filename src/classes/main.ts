@@ -86,7 +86,7 @@ export class Main {
             }
 
         if (page && filter) {
-            console.log(page,filter);
+           // console.log(page,filter);
             this._charterApi.getCharaterByFilter(filter, page).then(res => {
                 if (res as ICharaterInfo) {
                     this._charaterInfo = res as ICharaterInfo;
@@ -99,6 +99,7 @@ export class Main {
                 }
 
             })
+            .catch(console.log);
             return;
         }
 
@@ -114,7 +115,7 @@ export class Main {
                     });
                 }
 
-            })
+            }).catch(console.log);
             return;
         }
 
@@ -130,7 +131,7 @@ export class Main {
                     });
                 }
 
-            })
+            }).catch(console.log);
             return;
         }
 
@@ -145,13 +146,13 @@ export class Main {
                 });
             }
 
-        });
+        }).catch(console.log);
 
     }
     genaratedCharacter(value: ICharacter): RowCharater {
         let row = new RowCharater();
 
-        console.log(value);
+        //console.log(value);
         row.eventHtml.subscribe(res => this.rowClick(res));
         row.genaratedHtml(value);
         if (this._divListCharater) {
